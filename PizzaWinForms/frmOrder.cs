@@ -13,6 +13,7 @@ namespace PizzaWinForms
 {
     public partial class frmOrder : Form
     {
+        public Customer OrderCustomer { get; set; }
         public frmOrder()
         {
             InitializeComponent();
@@ -42,7 +43,16 @@ namespace PizzaWinForms
         private void BtnCustomerSearch_Click(object sender, EventArgs e)
         {
             frmCustomerSearch cs = new frmCustomerSearch();
-            cs.ShowDialog();
+            cs.ShowDialog(this);
+
+            if(OrderCustomer != null)
+                txtCustomer.Text = OrderCustomer.FirstName + " " + OrderCustomer.LastName;
+        }
+
+        private void BtnAddOrderItem_Click(object sender, EventArgs e)
+        {
+            frmAddOrderItem addItem = new frmAddOrderItem();
+            addItem.ShowDialog(this);
         }
     }
 }

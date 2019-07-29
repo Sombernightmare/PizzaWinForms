@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAddOrderItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddOrderItem.Designer.cs">
+      <DependentUpon>frmAddOrderItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\DbInitializer.cs" />
     <Compile Include="Data\PizzaContext.cs" />
     <Compile Include="frmCustomerSearch.cs">
@@ -79,6 +85,9 @@
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAddOrderItem.resx">
+      <DependentUpon>frmAddOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerSearch.resx">
       <DependentUpon>frmCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
