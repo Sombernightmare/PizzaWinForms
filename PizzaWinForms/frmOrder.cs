@@ -13,7 +13,9 @@ namespace PizzaWinForms
 {
     public partial class frmOrder : Form
     {
+        private DataTable _orderItems;
         public Customer OrderCustomer { get; set; }
+
         public frmOrder()
         {
             InitializeComponent();
@@ -21,7 +23,11 @@ namespace PizzaWinForms
 
         private void FrmOrder_Load(object sender, EventArgs e)
         {
+            this.CenterToScreen();
             PopulateDropdowns();
+            BuildOrderItemsSchema();
+            dgOrderItems.DataSource = _orderItems;
+            dgOrderItems.Columns["InventoryItems"].Visible = false;
         }
 
         private void PopulateDropdowns()
@@ -32,12 +38,13 @@ namespace PizzaWinForms
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BuildOrderItemsSchema()
         {
-            if (cmbOrderType.SelectedIndex != -1)
-            {
-                OrderType selectedType = (OrderType)cmbOrderType.SelectedItem;
-            }
+            _orderItems = new DataTable();
+            _orderItems.Columns.Add("Type", typeof(OrderItemType));
+            _orderItems.Columns.Add("Price", typeof(decimal));
+            _orderItems.Columns.Add("Details", typeof(string));
+            _orderItems.Columns.Add("InventoryItems", typeof(IEnumerable<InventoryItem>));
         }
 
         private void BtnCustomerSearch_Click(object sender, EventArgs e)
@@ -52,7 +59,17 @@ namespace PizzaWinForms
         private void BtnAddOrderItem_Click(object sender, EventArgs e)
         {
             frmAddOrderItem addItem = new frmAddOrderItem();
-            addItem.ShowDialog(this);
+
+            if (addItem.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            DataRow row = _orderItems.NewRow();
+            row["Type"] = addItem.Type;
+            //row["Price"] = 
+            row["Details"] = string.Join(", ", addItem.InventoryItems.Select(i => i.Name));
+            row["InventoryItems"] = addItem.InventoryItems;
+
+            _orderItems.Rows.Add(row);
         }
     }
 }

@@ -27,16 +27,8 @@ namespace PizzaWinForms
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtAddress.Text) && string.IsNullOrWhiteSpace(txtName.Text) && string.IsNullOrWhiteSpace(txtPhoneNumber.Text))
-            {
-                dgResults.DataSource = null;
-                return;
-            }
-            List<Customer> customers = _context.Customers.Where(c => txtName.Text == "" || c.FirstName.Contains(txtName.Text) || c.LastName.Contains(txtName.Text))
-                                                      .Where(c => txtAddress.Text == "" || c.StreetAddress.Contains(txtAddress.Text))
-                                                      .Where(c => txtPhoneNumber.Text == "" || c.PhoneNumber.Contains(txtPhoneNumber.Text))
-                                                      .ToList();
-            dgResults.DataSource = customers;
+            
+            dgResults.DataSource = Customer.FindCustomers(txtName.Text, txtAddress.Text, txtPhoneNumber.Text);
         }
 
         private void BtbSelectCustomer_Click(object sender, EventArgs e)
@@ -50,5 +42,7 @@ namespace PizzaWinForms
             ((frmOrder)Owner).OrderCustomer = selectedCustomer;
             Close();
         }
+
+       
     }
 }

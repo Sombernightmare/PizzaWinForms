@@ -31,11 +31,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbOrderType = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.btnCustomerSearch = new System.Windows.Forms.Button();
             this.btnAddOrderItem = new System.Windows.Forms.Button();
+            this.dgOrderItems = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgOrderItems)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -64,16 +65,6 @@
             this.cmbOrderType.Name = "cmbOrderType";
             this.cmbOrderType.Size = new System.Drawing.Size(196, 21);
             this.cmbOrderType.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(687, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label3
             // 
@@ -112,16 +103,27 @@
             this.btnAddOrderItem.UseVisualStyleBackColor = true;
             this.btnAddOrderItem.Click += new System.EventHandler(this.BtnAddOrderItem_Click);
             // 
+            // dgOrderItems
+            // 
+            this.dgOrderItems.AllowUserToAddRows = false;
+            this.dgOrderItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgOrderItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgOrderItems.Location = new System.Drawing.Point(42, 288);
+            this.dgOrderItems.Name = "dgOrderItems";
+            this.dgOrderItems.ReadOnly = true;
+            this.dgOrderItems.Size = new System.Drawing.Size(678, 150);
+            this.dgOrderItems.TabIndex = 8;
+            // 
             // frmOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgOrderItems);
             this.Controls.Add(this.btnAddOrderItem);
             this.Controls.Add(this.btnCustomerSearch);
             this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbOrderType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -129,6 +131,7 @@
             this.Name = "frmOrder";
             this.Text = "Order Form";
             this.Load += new System.EventHandler(this.FrmOrder_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgOrderItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,11 +142,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbOrderType;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Button btnCustomerSearch;
         private System.Windows.Forms.Button btnAddOrderItem;
+        private System.Windows.Forms.DataGridView dgOrderItems;
     }
 }
 
